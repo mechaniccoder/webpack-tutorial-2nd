@@ -1,6 +1,7 @@
 import webpack from "webpack";
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const config = (env: any): webpack.Configuration => {
   return {
@@ -13,12 +14,26 @@ const config = (env: any): webpack.Configuration => {
       path: path.join(__dirname, "dist"),
       filename: "[name].bundle.js",
       clean: true,
+      assetModuleFilename: "assets/[hash][ext]",
     },
     plugins: [
       new HtmlWebpackPlugin({
         title: "Development",
       }),
+      new MiniCssExtractPlugin(),
     ],
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, "css-loader"],
+        },
+        {
+          test: /\.(png)$/,
+          type: "asset",
+        },
+      ],
+    },
   };
 };
 
