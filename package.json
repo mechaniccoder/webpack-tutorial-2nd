@@ -16,8 +16,14 @@
     "webpack": "^5.46.0"
   },
   "devDependencies": {
+    "@types/css-minimizer-webpack-plugin": "^3.0.2",
+    "@types/mini-css-extract-plugin": "^2.0.1",
     "@types/node": "^16.4.2",
     "@types/webpack": "^5.28.0",
+    "css-loader": "^6.2.0",
+    "css-minimizer-webpack-plugin": "^3.0.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "style-loader": "^3.2.1",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5",
     "webpack-cli": "^4.7.2"
