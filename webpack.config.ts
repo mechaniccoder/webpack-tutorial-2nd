@@ -1,27 +1,23 @@
 import webpack from "webpack";
 import path from "path";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const config: webpack.Configuration = {
   mode: "production",
-  entry: "./src/index.js",
+  entry: {
+    index: "./src/index.js",
+    print: "./src/print.js",
+  },
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
+    clean: true,
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|otf)$/i,
-        type: "asset/resource",
-      },
-    ],
-  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Output Management",
+    }),
+  ],
 };
 
 export default config;
