@@ -1,7 +1,9 @@
+import print from "./print";
+
 function getComponent() {
-  import(/* webpackPrefetch: true */ "./prefetch");
-  import(/* webpackPreload: true */ "./preload");
   const element = document.createElement("div");
+
+  print("print");
 
   return import("lodash")
     .then(({ default: _ }) => {
