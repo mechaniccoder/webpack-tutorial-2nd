@@ -5,19 +5,14 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 const config = (env: any): webpack.Configuration => {
   return {
     mode: env.NODE_ENV,
-    entry: "./src/library.js",
+    entry: "./src/index.js",
     output: {
-      path: path.join(__dirname, "libary"),
-      filename: "index.js",
-      library: "MyLibrary",
+      path: path.join(__dirname, "dist"),
+      filename: "[name].bundle.js",
+      clean: true,
     },
-    externals: {
-      lodash: {
-        commonjs: "lodash",
-        commonjs2: "lodash",
-        amd: "lodash",
-        root: "_",
-      },
+    optimization: {
+      usedExports: true,
     },
   };
 };

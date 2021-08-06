@@ -1,4 +1,4 @@
-import print from "./print";
+import { print } from "./print";
 
 function getComponent() {
   const element = document.createElement("div");
